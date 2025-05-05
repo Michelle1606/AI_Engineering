@@ -1,0 +1,66 @@
+📘 RUN GUIDE — Pandora AI Counselor Bot
+======================================
+
+👩‍💻 Authors: Michelle & Radhika  
+🧠 Project Type: AI Counseling Chatbot using RAG (Retrieval-Augmented Generation)  
+🔧 Frameworks: Hugging Face Transformers, FAISS, LangChain  
+
+--------------------------------------------
+🟢 FINAL WORKING MODE: RAG (no fine-tuning)
+--------------------------------------------
+
+1️⃣ STEP 1: Build FAISS Vector Store
+-------------------------------------
+Command:
+    python build_faiss_index_hf.py
+
+This will:
+✅ Load 'intents.json'  
+✅ Convert questions to embeddings using Hugging Face  
+✅ Build and save a FAISS index in 'counselor_faiss_index/'
+
+
+2️⃣ STEP 2: Launch the RAG-Based Chatbot
+----------------------------------------
+Command:
+    python counselor_demo_app_rag_only.py
+
+This will:
+✅ Load the FAISS vector store  
+✅ Use Hugging Face model to generate answers  
+✅ Allow you to chat with Pandora in terminal
+
+
+--------------------------------------------
+🧪 OPTIONAL: Test RAG Separately
+--------------------------------------------
+Command:
+    python query_faiss_rag.py
+
+This script lets you test how FAISS + LangChain respond to a query, without running the full chatbot UI.
+
+
+--------------------------------------------
+🧪 OPTIONAL: For Fine-Tuning Mode (if needed)
+--------------------------------------------
+
+1. Prepare fine-tuning data:
+    python prepare_finetune_data.py
+
+2. Fine-tune using:
+    Open `fine_tune_model.ipynb` in Jupyter or Colab
+
+3. Then run:
+    python counselor_demo_app.py
+   *(This one supports combined fine-tuning + RAG if configured)*
+
+
+--------------------------------------------
+🗂 Files Required:
+--------------------------------------------
+- intents.json                  → Main data for counseling Q&A
+- build_faiss_index_hf.py      → Builds the vector store
+- counselor_demo_app_rag_only.py → Final chatbot (RAG-only)
+- query_faiss_rag.py           → Test queries (optional)
+
+✅ You’re all set!
